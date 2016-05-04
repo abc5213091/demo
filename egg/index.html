@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>砸金蛋</title>
+		
+		<script type="text/javascript" charset="utf-8">
+			init();
+		
+			$(function(){
+				var hammer=".u-hammer",box=".g-egg", li=".g-egg li";
+				var pond=["iPhone6S","荣耀3C","至尊茶杯","MAC","IPad","iPod","谢谢惠顾"];
+				var w=$(window).height(),fw=$(".g-foot").height();
+				var isClick=false;
+				var isScreen=false;
+				var tear_w=86;
+				w=w-fw-30-35;
+				$(".g-top").height(w*.4);
+				$(".g-egg").height(w*.6);
+
+				if($(window).height()<=420)
+				{
+					isScreen=true;
+				}
+				
+				if(isScreen)
+				{
+					$(".m-t-img").width("70%");
+					$(".g-egg li").css({"width":70,"height":170});
+					$(".g-egg .u-img").css("width",70);
+					$(".light").css({left:-18,bottom:114});
+					tear_w=70;
+				}
+				
+				$(li).click(function(e){
+					if(isClick)
+					{
+						alert("您已经砸过金蛋了");
+						return;
+					}
+					isClick=true;
+					
+					var obj=$(this);
+					var _hammer=obj.find(hammer);
+					
+					$(li).find(".u-egg").css('-webkit-animation','bad');
+					obj.find(".u-btn img").attr("src","images/btn1.png");
+					
+					_hammer.animate({width:'60%', bottom:'30%',opacity:1},500,function(){
+						_hammer.addClass("click");
+						
+						setTimeout(function(){
+							_hammer.hide();
+							obj.unbind("click");
+							obj.find(".u-tear").animate({width:tear_w},1000,function(){
+								obj.find('.u-img').children("img").attr('src','images/egg3.png');
+								obj.find(".u-tearegg").css('-webkit-animation','egg .5s 0');
+								obj.find(".u-smash").show();
+								
+								
+								obj.find(".light").addClass("lightH");
+								//obj.find(".m-tip").addClass("m-tipH");
+								$(".m-tip").css({"left":obj.position().left-10,"z-index":9999}).addClass("m-tipH");
+								setTimeout(function(){
+									obj.find(".u-tearegg").hide();
+									obj.find(".u-tear").hide()
+								},100)
+							});
+						},1000)
+						
+						
+					});
+					
+					setTimeout(function(){
+						_hammer.removeClass("click");
+					},100)
+				});
+				
+				$(".u-take").click(function(e){
+					e.stopPropagation();
+					$(".m-from").show();
+					$(".m-shade").show();
+				});
+				
+				$(".m-submit input").click(function(){
+					$(".m-from").hide();
+					$(".m-shade").hide();
+				})
+				
+			});
+			
+			
+			//初始加载
+			function init()
+			{
+				var imgAddress=['images/bg.jpg','images/bj2.jpg','images/bj3.jpg','images/btn.png','images/btn1.png','images/cloud.png','images/cloud1.png','images/cloud2.png','images/egg.png','images/egg2.png','images/egg3.png','images/egg4.png','images/f-bg.png','images/hammer.png','images/light.png','images/tear.png','images/title.png'];
+				var imgStart=[];
+				var imgId=0;
+				
+				var loadImg=function(){
+					var imgObj=new Image();
+					var poor=0;
+					imgObj.src=imgAddress[imgId];
+					imgObj.onload=function(){
+						if(imgObj.complete==true)
+						{
+							imgStart.push(imgObj);
+							imgId++;
+							if(imgId<imgAddress.length)
+							{
+								poor=Math.floor(imgId*100/imgAddress.length);
+								
+								loadImg();
+							}
+							if(imgId==imgAddress.length)
+							{
+								poor=100;
+								$(".loading").fadeOut();
+							}
+							$(".l-bar").width(poor+"%");
+							$(".l-num").html(poor+"%");
+						}
+					}
+				}
+				
+				loadImg();
+			}
+		</script>
+	</head>
+	<body>
+		
+		<div class="head">
+			砸金蛋抽大奖
+		</div>
+		
+		<div class="content">
+			 <div class="g-top">
+			 	<div class="m-title">
+			 		
+			 	</div>
+			 	
+			 	<div class="m-t-img">
+			 		<img src="images/title.png"/>
+			 	</div>
+			 </div>
+			
+			 
+			 
+			 <div class="g-egg">
+			 	
+			 	<div class="m-tip">
+			 					<span>恭喜您!!</span>
+			 					<span>中奖XXXX</span>
+			 					<span class="u-take">马上领取</span>
+		 	    </div>
+			 	
+			 	<ul>
+			 		<li>
+			 			<div class="u-img">
+			 				<img class="u-egg" src="images/egg.png"/>
+			 				<span class="u-tear"><img src="images/tear.png"/></span>
+			 				<div class="u-smash"><img src="images/egg4.png"/></div>
+			 				<div class="u-hammer"><img src="images/hammer.png"/></div>
+			 				
+			 			</div>
+			 			
+			 			
+			 			
+			 			<div class="light"></div>
+			 			
+			 			<div class="u-btn">
+			 				<img src="images/btn.png"/>
+			 			</div>
+			 			
+			 		</li>
+			 		<li>
+			 			<div class="u-img">
+			 				<img class="u-egg" src="images/egg.png"/>
+			 				<span class="u-tear"><img src="images/tear.png"/></span>
+			 				<div class="u-smash"><img src="images/egg4.png"/></div>
+			 				<div class="u-hammer"><img src="images/hammer.png"/></div>
+			 				
+			 			</div>
+			 			
+			 			<!--<div class="m-tip m-notip">
+			 					<span>很遗憾!<br>没有中奖</span>
+		 				</div>-->
+			 			
+			 			<div class="light"></div>
+			 			
+			 			<div class="u-btn">
+			 				<img src="images/btn.png"/>
+			 			</div>
+			 			
+			 		</li>
+			 		<li>
+			 			<div class="u-img">
+			 				<img class="u-egg" src="images/egg.png"/>
+			 				<span class="u-tear"><img src="images/tear.png"/></span>
+			 				<div class="u-smash"><img src="images/egg4.png"/></div>
+			 				<div class="u-hammer"><img src="images/hammer.png"/></div>
+			 				
+			 			</div>
+			 			
+			 			<!--<div class="m-tip">
+			 					<span>恭喜您!!</span>
+			 					<span>中奖XXXX</span>
+			 					<span class="u-take">马上领取</span>
+		 				</div>-->
+			 			
+			 			<div class="light"></div>
+			 			
+			 			<div class="u-btn">
+			 				<img src="images/btn.png"/>
+			 			</div>
+			 		</li>
+			 	</ul>
+			 </div>
+			 
+			 <div class="g-foot">
+			 	<div class="m-txt">
+				 	<p>活动说明：活动说明活动说明活动说明活动说明</p>
+				 	<p>活动奖项：活动奖项活动奖项活动奖项活动奖项</p>
+			 	</div>
+			 	<div class="m-sm">
+			 		————微赢宝网络科技提供技术支持————
+			 	</div>
+			 </div>
+		</div>
+		
+		<div class="m-shade"></div>
+		
+		<div class="m-from">
+			 <h3>请认真填写资料,领取奖品！</h3>
+			 <p>姓名 <input type="text" name="UserName" id="UserName" value="" /></p>
+			 <p>电话 <input type="text" name="tel" id="tel" value="" /></p>
+			 <p>地址 <input type="text" name="address" id="address" value="" /></p>
+			 <div class="m-submit">
+			 	<input type="submit" name="" id="" value=" 提 交 " />
+			 </div>
+		</div>
+		
+		<div class="loading">
+			<div class="l-txt">
+				拼命加载中...<span class="l-num">100%</span>
+			</div>
+			<div class="l-bg">
+				<div class="l-bar"><span></span></div>
+				
+			</div>
+		</div>
+		
+	</body>
+</html>

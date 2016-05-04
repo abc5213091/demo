@@ -1,0 +1,90 @@
+@import url("base.css");
+
+/*头部*/
+body{ background: url(../images/bg.jpg) repeat;}
+div{ -webkit-user-select:none;user-select:none;  }
+.head{ width:100%; height: 35px; line-height: 35px; text-align: center; color: #fff; background: #0178c6; letter-spacing: .1rem;}
+.content{width:320px; min-height: 450px; margin: 0 auto;  overflow: hidden;}
+
+.g-top{ width:320px; height: 200px; background: url(../images/cloud2.png) no-repeat left 20px,url(../images/cloud2.png) no-repeat center,url(../images/cloud2.png) no-repeat  right bottom; background-size:80px,150px,40px ; -webkit-animation:could 30s 0s alternate infinite linear; }
+.g-top .m-title{ text-align: center; color: #fff; margin: 10px 0;}
+.g-top .m-t-img{ text-align: center; width: 90%;  margin: 0 auto;}
+.g-top .m-t-img img{ width:100%;}
+
+.g-egg{ width:320px; height: 300px; background: url(../images/bj2.jpg) no-repeat left bottom; background-size:100% ; position: relative;}
+
+.g-egg ul{ width:90%; display: -webkit-flex; position: absolute; bottom: 0;  left: 5%;}
+.g-egg li{ margin-right: 5%; -webkit-flex: 1;position: relative; width:86px; height: 190px; float: left;z-index: 999;}
+.g-egg li:last-child{margin-right: 0;}
+.g-egg li:first-child .m-tip{left: -20px;}
+.g-egg img{width:100%}
+.g-egg .u-img{width:86px; position: relative; margin-bottom: 30px;}
+.g-egg .u-img:after{content: ''; width: 40%; height: 5px;  box-shadow: -1px 12px 11px rgba(0, 0, 0, 0.34);position: absolute;border-radius: 50%; left: 50%; margin-left: -20%; }
+
+.g-egg .u-img .u-egg{-webkit-animation: imgAnimate .3s 0s infinite; -webkit-transform-origin: center;}
+
+.g-egg .u-tear{ width:0px; height: 25px; display: block; position: absolute; left: 0; top:45%; overflow: hidden;}
+.g-egg .u-tear img{ width:86px}
+.g-egg .u-tearegg{ width: 100%; position: absolute; left: 0; top:0; }
+.g-egg .u-hammer{ position: absolute; bottom: -50%; width:0%; left: 25%;-webkit-transform-origin: 40px; -webkit-transition: -webkit-transform 0s 0s; opacity: 0;}
+.g-egg .u-smash{ position: absolute; bottom: 40px; left: 0; width: 110%; display: none;}
+.g-egg .click{-webkit-animation:hammer .5s 0s 2;}
+
+.g-foot{ width:100%; background: url(../images/bj3.jpg) no-repeat left top; background-size:100% ; padding: 10px 0;}
+.g-foot .m-txt{width:90%; margin: 0 auto;}
+.g-foot p{margin: 0 0 10px 0; color: #fff;}
+.g-foot .m-sm{ width:90%; margin: 0 auto; text-align: center; color: #1899E0; text-shadow: 0 1px 1px #363636;}
+
+.m-tip{ width: 150px; min-height: 150px; background: url(../images/cloud1.png) no-repeat center; background-size:contain ; position: absolute; bottom:0px; left: -35px; -webkit-transition: bottom .5s 0; opacity: 0; z-index: 999;}
+
+.m-tipH{  bottom: 130px;opacity: 1;}
+.m-tip span{ width:100px; height: 20px; display: block; margin-left:20px; text-align: center;}
+.m-tip span:first-child{ margin-top: 35px; font-size: 1rem; color:red;font-weight: bold;}
+.m-tip span:nth-child(2){  color:#014d95;}
+.m-tip span:nth-child(3){color: #fff; font-weight: bold; font-size: 1rem; text-shadow: 1px 1px 1px #000000; letter-spacing: .1rem;}
+.m-notip{background: url(../images/cloud.png) no-repeat center;background-size:contain ;}
+.m-notip span:first-child{ color:#014d95; font-size: .8rem; padding-top: 10px; padding-left: 5px;}
+.light{ width: 120%; height: 0px; position: absolute; background: url(../images/light.png) no-repeat center 5px; left: 30px; background-size:100% ; -webkit-transition: height .5s 0;}
+
+.lightH{ width:120%; height: 100px; position: absolute; left: -10px; bottom:118px; }
+
+
+/*填写资料模块*/
+.m-from{ width:300px; height: 300px; margin: 0 auto; background: url(../images/f-bg.png) no-repeat center; background-size:100% ; position: absolute; top:50%; left: 50%; margin-left: -150px; margin-top: -150px; z-index: 99999; display: none;}
+.m-from h3{ text-align: center; margin-top: 45px; color: rgb(197, 35, 35); font-weight: normal; text-shadow: 0 1px 1px #FF8E8E;}
+.m-from p{text-align: center;color: rgb(197, 35, 35); }
+.m-from p input[type=text]{ height: 25px; border: 1px solid rgb(226, 140, 92); border-radius: 5px; background: #FFDAAB;color: rgb(121, 139, 194); padding: 0 10px;}
+.m-shade{ position: absolute; width:100%; height: 100%; top:0;left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.6);z-index: 9999;  display: none;}
+.m-submit{ text-align: center;}
+.m-submit input[type=submit]{ width:80px; height: 25px;border-radius: 5px; background: -webkit-linear-gradient(#c1161e,#96151a);color: #fff; font-size: 12px;}
+
+/*loading*/
+.loading{ width: 100%; height: 100%; position: absolute; top:0; left: 0; right: 0; bottom: 0; background: #31343b; z-index: 99999;}
+.loading .l-bg,.loading .l-bar{ width:90%; height: 3px; background: #22252b; position: absolute; top:50%;left: 5%;}
+.loading .l-bar{ width: 0%; background:#03aac9; left: 0; top:0;-webkit-transition: width .5s 0;}
+.loading .l-bar span{background: url(../images/loading.png) no-repeat right center; width: 25px; height: 18px; display: block; right: -8px; top:-8px; position: absolute;}
+.loading .l-txt{ position: absolute; text-align: center; top:40%; width:100%; font-size: 1rem; color: #fff; text-shadow: 0 3px 1px #000; letter-spacing: .1rem;}
+.loading .l-txt .l-num{ color:#fcff00;}
+/*动画模块*/
+@-webkit-keyframes could{
+	0%{background: url(../images/cloud2.png) no-repeat 50% 20px,url(../images/cloud2.png) no-repeat 100% center,url(../images/cloud2.png) no-repeat  0% bottom;}
+	50%{background: url(../images/cloud2.png) no-repeat 100% 20px,url(../images/cloud2.png) no-repeat 0% center,url(../images/cloud2.png) no-repeat  50% bottom;}
+	100%{background: url(../images/cloud2.png) no-repeat 0% 20px,url(../images/cloud2.png) no-repeat 50% center,url(../images/cloud2.png) no-repeat  100% bottom;}
+}
+
+@-webkit-keyframes hammer{
+	0%{-webkit-transform: rotate(-30deg);}
+	100%{-webkit-transform: rotate(0deg);}
+	}
+	
+@-webkit-keyframes egg{
+	0%{width: 100%;}
+	100%{ width:0; opacity: 0; -webkit-transform: rotate(360deg);}
+}
+@-webkit-keyframes imgAnimate{
+	0%{ -webkit-transform: rotate(0deg); }
+	25%{ -webkit-transform: rotate(5deg); }
+	50%{ -webkit-transform: rotate(0deg); }
+	75%{ -webkit-transform: rotate(-5deg); }
+	100%{-webkit-transform: rotate(0deg);}
+}

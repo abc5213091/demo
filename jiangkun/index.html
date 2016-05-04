@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
+		<meta name="apple-touch-fullscreen" content="YES">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="Expires" content="-1">
+		<meta http-equiv="pragram" content="no-cache">
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<link rel="prefetch" type="text/css" href="images/30_03.jpg"/>
+		<link rel="prefetch" type="text/css" href="images/30_07.jpg"/>
+		<link rel="prefetch" type="text/css" href="images/30_10.jpg"/>
+		<link rel="prefetch" type="text/css" href="images/tu_01.jpg"/>
+		<link rel="prefetch" type="text/css" href="images/tu_02.jpg"/>
+		<script src="js/jquery-1.8.2.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.promptu-menu.js" type="text/javascript" charset="utf-8"></script>
+		
+		
+		<script type="text/javascript" charset="utf-8">
+			var __w;
+			
+			var isLoad=false;
+			
+			init(function(){});
+			
+			$(function(){
+				
+				//初始加载
+				init(function(){
+					$(".bj").css("-webkit-animation","bjScale 10s 0s");
+				
+					SetImg();
+					
+					window.setInterval(TextAuto,2000);
+					 
+					MusicPlay();
+					
+					$(".jk-content").children("li").height($(window).height());
+					
+					$('.jk-content').promptumenu({width:$(window).width(), height:$(window).height(), rows: 1, columns: 1, direction: 'vertical', pages: true});
+					
+					$(".promptumenu_nav").remove();
+				});
+			});
+			
+			
+			//设置轮播图片  自适应
+			function SetImg(){
+				var pic1=$(".pic1 ul"),
+					pic2=$(".pic2 ul");
+				
+				var li1=pic1.find("li");
+				var li2=pic2.find("li");
+				
+				__w=Math.floor($(window).width()/3);
+				
+				$(".pic1 ul").css("width",$(window).width()*li1.length);
+				$(".pic1 li").css("width",$(window).width());
+				$(".pic2 ul").css("width",li2.outerWidth()*li2.length);
+				$(".pic2 li").css("width",__w );
+				
+				AnimatePic();
+			}
+			
+			//图片轮播
+			function AnimatePic(){
+				
+				setInterval(function(){
+					$(".pic1 ul").animate({marginLeft:"-100%"},1000,function(){
+						$(this).css("marginLeft","0px").children("li:first").appendTo(".pic1 ul");
+				});
+					
+				},4000);
+				
+				setInterval(function(){
+					$(".pic2 ul").animate({marginLeft:-__w},500,function(){
+							$(this).css("marginLeft","0px").children("li:first").appendTo(".pic2 ul");
+					});
+				},2000);
+			}
+			//文字轮播
+			function TextAuto()
+			{
+				$(".j-txt").animate({marginTop:"-20px"},500,function(){
+						$(this).css("marginTop","0px").children("li:first").appendTo(".j-txt");
+				});
+			}
+			//音乐
+			function MusicPlay(){
+				var audio=document.getElementById("music");
+				audio.play();
+				$(".u-audio").click(function(){
+					
+					if($(".off").length==0)
+					{
+						$(this).addClass("off");
+						audio.pause();
+					}else{
+						$(this).removeClass("off");
+						audio.play();
+					}
+				});
+			}
+			
+			
+			//初始加载
+			function init(callback)
+			{
+				var imgAddress=['images/audio.png','images/audio_off.png','images/bj_01_03.jpg','images/n1.png','images/n12.png','images/bj_01_07.jpg','images/bj_02.jpg','images/bj_03.jpg','images/bj1_03.jpg','images/30_03.jpg','images/30_07.jpg','images/30_10.jpg','images/tu_01.jpg','images/tu_02.jpg'];
+				var imgStart=[];
+				var imgId=0;
+				
+				var loadImg=function(){
+					var imgObj=new Image();
+					var poor=0;
+					imgObj.src=imgAddress[imgId];
+					imgObj.onload=function(){
+						if(imgObj.complete==true)
+						{
+							imgStart.push(imgObj);
+							imgId++;
+							if(imgId<imgAddress.length)
+							{
+								poor=Math.floor(imgId*100/imgAddress.length);
+								loadImg();
+							}
+							if(imgId==imgAddress.length)
+							{
+								poor=100;
+								$(".loading").fadeOut();
+								callback();
+							}
+							
+							$(".loading .num").html(poor+"%");
+							
+							
+						}
+					}
+				}
+				
+				loadImg();
+			}
+			
+		</script>
+		<title>读 ● 姜昆</title>
+	</head>
+	<body>
+		<audio id="music" preload="auto" src="The Sound Of Silence.mp3"></audio>
+		
+		<div class="loading">
+			<div class="img">
+				<div class="num">0%</div>
+				<div class="text">拼命加载中...</div>
+			</div>
+			
+		</div>
+		
+		<div class="u-audio"></div>
+		
+		<div class="content">
+			
+			<ul class="jk-content">
+				
+			<li class="g-jk0 cur">
+				<div class="bj"></div>
+				<div class="u-hua"></div>
+				<div class="m-img"></div>
+				<div class="m-pic"></div>
+				<div class="float_txt">
+					<h3><span>讀</span>/姜昆</h3>
+					<p>
+						在生活中，追求理想真我<br>
+						 他从未变色，径直穿行 <br>
+						 本色，让他独当一面  <br><br>
+						 当外面的世界纷繁熙攘 <br>
+						 他却选择成为真实的自我
+					</p>
+				</div>
+			</li>
+			
+			<li class="g-jk1">
+				<div class="u-hua"></div>
+				<div class="m-img"></div>
+				<div class="m-pic"></div>
+				<div class="float_txt">
+					<p>
+						（1950年11月19日—） <br>
+						中国第八代相声演员 <br>
+						祖籍山东黄县，北京人
+					</p>
+				</div>
+			</li>
+			
+			<li class="g-jk2">
+				<div class="u-hua"></div>
+				<div class="m-img"></div>
+				<div class="m-pic"></div>
+				<div class="m-animatePic">
+					<div class="pic1">
+						<ul>
+							<li><img src="images/n13.png"></li>
+							<li><img src="images/1.jpg"></li>
+							<li><img src="images/2.jpg"></li>
+							<li><img src="images/3.jpg"></li>
+							<li><img src="images/4.jpg"></li>
+						</ul>
+					</div>
+					<div class="pic2">
+						<ul>
+							<li><img src="images/img3.jpg"></li>
+							<li><img src="images/img2.jpg"></li>
+							<li><img src="images/img1.jpg"></li>
+							<li><img src="images/lun1.jpg"></li>
+							<li><img src="images/lun2.jpg"></li>
+							<li><img src="images/lun3.jpg"></li>
+							<li><img src="images/lun4.jpg"></li>
+							<li><img src="images/lun5.jpg"></li>
+							<li><img src="images/lun6.jpg"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="float_txt">
+					<p>
+						他多才多艺频频涉足影视及书画界 <br>
+						 创作和表演了上百段相声作品
+					</p>
+				</div>
+			</li>
+			
+			<li class="g-jk3">
+				<div class="u-hua"></div>
+				<div class="m-img"></div>
+				<div class="m-pic"></div>
+				<div class="float_txt">
+						<p><span>1985</span>姜昆当选中国曲艺家协会副主席</p>
+						<p><span>1985</span>接替恩师马季，担任了中国广播说唱团团长，并选为中华青年联合会常委</p>
+						<p><span>1995</span>辞去中国广播说唱团团长的职务，担任中华曲艺学会会长。他编辑的《中国传统相声大全》成为研究中国相声珍贵的权威性资料。他的《姜昆相声集》是中国相声界的教科书</p>
+						<p><span>1998</span>出版《笑面人生》，第一年销售四十五万册，在中国销售排行榜上名列第二</p>
+						<p><span>1998</span>年近五十的姜昆创办中国相声网</p>
+						<p><span>2004</span>担任中国文联曲艺家协会分党组书记、副主席</p>
+						<p><span>2009</span>被中国名人报道中国相声小品人才库收录</p>
+						<p><span>2011</span>担任中国文联曲艺家协会副主席</p>
+						<p><span>2011</span>任中国文学艺术基金会副理事长兼秘书长</p>
+				</div>
+				
+			</li>
+			
+			<li class="g-jk4">
+				<div class="u-hua"></div>
+				<div class="m-img"></div>
+				<div class="float_txt">
+					<ul class="j-txt">
+						<li class="t16">1992-2011 </li>
+						<li> 荣获第二届中国金唱片奖戏曲曲艺类奖</li> 
+						<li> 赴太行老区慰问演出</li>
+						<li> …… </li>
+						<li>主持首届全国3·15曲艺晚会 </li>
+						<li>  获聘山东师范大学客座教授</li>
+						<li>主持首届全国3·15曲艺晚会 </li>
+						<li>  获聘山东师范大学客座教授</li>
+						<li>主持首届全国3·15曲艺晚会 </li>
+						<li>  获聘山东师范大学客座教授</li>
+					</ul>
+				</div>
+				
+				<div class="float_txt1">
+					<p>
+						九年光阴<br>
+						在他看来有些走路只是散步
+					</p>
+				</div>
+			</li>
+			
+			
+			<li class="g-jk5">
+				<div class="u-hua"></div>
+			</li>
+			
+			<li class="g-jk6">
+				<div class="u-hua"></div>
+				<a class="u-link" href="#" title="了解更多"></a>
+			</li>
+			
+			<li class="g-jk7" style="background: url(images/30_03.jpg) no-repeat center; background-size:cover ;">
+				<div class="u-hua"></div>
+			</li>
+			
+			<li class="g-jk8" style="background: url(images/30_07.jpg) no-repeat center; background-size:cover ;">
+				<div class="u-hua"></div>
+			</li>
+			
+			<li class="g-jk9" style="background: url(images/30_10.jpg) no-repeat center; background-size:cover ;">
+			</li>
+			</ul>
+		</div>
+		
+	</body>
+</html>

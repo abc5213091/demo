@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<title>深圳广济医院</title>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/touchslider.dev.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				/*图片轮播*/
+				Carousel({id:'ban',point:'ban_ico'});
+				/*新闻轮播*/
+				Carousel({id:'expert',point:'m-point',auto:1,prve:'#m-point .prve',next:'#m-point .next'});
+				/*专家轮播*/
+				Carousel({id:'m-art',point:'m-art-point',auto:0,callback:afterCallback});
+				
+				$(".m-nav li").click(function(){
+					$(this).addClass("active").siblings().removeClass("active");
+				});
+				
+				$(".m-tab li").click(function(){
+					var index=$(this).index();
+					$(this).addClass("active").siblings().removeClass("active");
+					$("#m-art-point a").eq(index).click();
+				});
+				
+			});
+			
+			/*轮播回调*/
+			function afterCallback(){
+				var index=$("#m-art-point a[class='active']").index();
+				$(".m-tab li").eq(index).addClass("active").siblings().removeClass("active");
+			}
+			
+			//轮播效果
+			function Carousel(opt){
+				
+				var active = 0, as = document.getElementById(opt.point).getElementsByTagName('a');
+
+				for (var i = 0; i < as.length; i++) {
+					(function() {
+						var j = i;
+						as[i].onclick = function() {
+							t2.slide(j);
+							return false;
+						}
+					})();
+				}
+				var t2 = new TouchSlider({
+					id : opt.id,
+					auto:opt.auto, //bool
+					speed : 600,
+					timeout : 6000,
+					before : function(index) {
+						as[active].className = '';
+						active = index;
+						as[active].className = 'active';
+					},
+					after: opt.callback || function(){}
+				});
+				
+				if(opt.prve && opt.next){
+					$(opt.prve).click(function(){
+						t2.prev();
+					});
+					$(opt.next).click(function(){
+						t2.next();
+					});
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div class="g-box ">
+			<div class="m-head">
+				<div class="tel f-fl">
+					免费热线：0755-8358 1866
+				</div>
+				<div class="consult f-fr">
+					点击咨询专家
+				</div>
+			</div>
+			<div class="m-logo">
+				<img src="images/tu01.png"/>
+			</div>
+		</div>
+		
+		<div class="g-box">
+			<nav class="m-nav">
+				<ul>
+					<li class="active"><a href="###">首页</a></li>
+					<li><a href="###">医院简介</a></li>
+					<li><a href="###">特色技术</a></li>
+					<li><a href="###">典型案例</a></li>
+					<li><a href="###">专业团队</a></li>
+				</ul>
+			</nav>
+			
+			<div class="m-banner">
+				<ul class="ban_nav" id="ban" >
+					<li>
+						<a href="###">
+							<img src="images/tu02.jpg" >
+						</a>
+					</li>
+					<li>
+						<a href="###">
+							<img src="images/tu02.jpg" >
+						</a>
+					</li>
+					<li>
+						<a href="###">
+							<img src="images/tu02.jpg" >
+						</a>
+					</li>
+				</ul>
+
+				<div class="pic_bottom">
+					<div class="ban_ico" id="ban_ico">
+						<a href="javascript:void(0);" class="active">
+							1
+						</a>
+						<a href="javascript:void(0);" class="">
+							2
+						</a>
+						<a href="javascript:void(0);" class="">
+							3
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="m-search">
+			<input type="text" name="" id="" value="" placeholder="请输入关键词" />
+		</div>
+		
+		<div class="g-box">
+			<div class="m-list">
+				<ul>
+					<li class="bf-none">
+						<a href="###">
+							<img src="images/ico04.png"/>
+							<p>男性腋臭</p>
+						</a>
+					</li>
+					<li>
+						<a href="###">
+							<img src="images/ico05.png"/>
+							<p>女性腋臭</p>
+						</a>
+					</li>
+					<li class="af-none">
+						<a href="###">
+							<img src="images/ico06.png"/>
+							<p>复发性腋臭</p>
+						</a>
+					</li>
+					<li class="bf-none">
+						<a href="###">
+							<img src="images/ico07.png"/>
+							<p>腋臭病因</p>
+						</a>
+					</li>
+					<li>
+						<a href="###">
+							<img src="images/ico08.png"/>
+							<p>腋臭治疗</p>
+						</a>
+					</li>
+					<li class="af-none">
+						<a href="###">
+							<img src="images/ico09.png"/>
+							<p>腋臭费用</p>
+						</a>
+					</li>
+					<li class="bf-none">
+						<a href="###">
+							<img src="images/ico10.png"/>
+							<p>腋臭手术</p>
+						</a>
+					</li>
+					<li>
+						<a href="###">
+							<img src="images/ico11.png"/>
+							<p>腋臭遗传</p>
+						</a>
+					</li>
+					<li class="af-none">
+						<a href="###">
+							<img src="images/ico12.png"/>
+							<p>腋臭常识</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="g-box">
+			<div class="m-nav1">
+				<div class="consult f-fl">
+					<span class="tag">1</span>
+					在线咨询
+				</div>
+				<div class="tel f-fr">
+					0755-8358 1866
+				</div>
+			</div>
+			
+			<div class="m-news">
+				<div class="m-tab t16 c-back f-b">
+					<ul>
+						<li class="active">医院动态</li>
+						<li>特色技术</li>
+					</ul>
+				</div>
+				
+				<div id="m-art" class="m-slide" style="position: relative; overflow: hidden;" >
+					<div class="art-item">
+						<div class="m-tabbox">
+							<div class="m-media">
+								<a href="###">
+									<img src="images/tu03.jpg"/>
+									<div class="txt">
+										<h3 class="f-toe">网络预约减免50%手术费 </h3>
+										<span class="f-clamp3">凡通过网络或电话成功预约即可一对一面诊倪江龙教授，享受享受享受</span>
+									</div>
+								</a>
+							</div>
+							
+							<ul class="m-newslist">
+								<li><a href="###"><span class="u-item">倪江龙主任出席“2014”中·韩腋臭超微创技术</span><span class="c-yellow"> >></span></a></li>
+								<li><a href="###"><span class="u-item">倪江龙主任出席“2014”中·韩腋臭超微创技术</span><span class="c-yellow"> >></span></a></li>
+								<li><a href="###"><span class="u-item">倪江龙主任出席“2014”中·韩腋臭超微创技术</span><span class="c-yellow"> >></span></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="art-item">
+						<div class="m-tabbox">
+							<div class="m-media">
+								<a href="###">
+									<img src="images/tu03.jpg"/>
+									<div class="txt">
+										<h3 class="f-toe">网络预约减免50%手术费 </h3>
+										<span class="f-clamp3">凡通过网络或电话成功预约即可一对一面诊倪江龙教授，享受享受享受</span>
+									</div>
+								</a>
+							</div>
+							
+							<ul class="m-newslist">
+								<li><a href="###"><span class="u-item">倪江龙主任出席“2014”中·韩腋臭超微创技术</span><span class="c-yellow"> >></span></a></li>
+								<li><a href="###"><span class="u-item">倪江龙主任出席“2014”中·韩腋臭超微创技术</span><span class="c-yellow"> >></span></a></li>
+								<li><a href="###"><span class="u-item">倪江龙主任出席“2014”中·韩腋臭超微创技术</span><span class="c-yellow"> >></span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div id="m-art-point" style="display: none;">
+						<a href="javascript:void(0);" class="active"></a>
+						<a href="javascript:void(0);" class=""></a>
+					</div>
+				</div>
+			
+			<div class="m-title">
+				权威专家
+				<span class="btn f-fr">更多 +</span>
+			</div>
+			
+			<div class="m-banner">
+				<!--start 专家轮播-->
+				<div id="expert">
+					<div class="expert-item">
+						<div class="m-media">
+							<img src="images/tu04.jpg"/>
+							<div class="txt">
+								<div class="m-face">
+									<img src="images/tu03.png"/>
+									<div class="u-txt">
+										<div class="c-yellow t25 f-b">
+											吴世雄
+										</div>
+										<h3 class="c-back t14">特聘顾问</h3>
+									</div>
+									<h3 class="c-back f-clear t14">权威荣誉 </h3>
+									<p class="f-toe">★ 韩国微创科学研究中心副</p>
+									<p class="f-toe">★ 韩国微创手术第一人 </p>
+									<p class="f-toe">★ 亚洲太平洋整形外科学会　微创专家</p>
+								</div>
+							</div>
+							<div class="m-handle">
+								<a href="###" class="btn btn1">了解专家</a>
+								<a href="###" class="btn btn2">在线咨询</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="expert-item">
+						<div class="m-media">
+							<img src="images/tu04.jpg"/>
+							<div class="txt">
+								<div class="m-face">
+									<img src="images/tu03.png"/>
+									<div class="u-txt">
+										<div class="c-yellow t25 f-b">
+											吴世雄
+										</div>
+										<h3 class="c-back t14">特聘顾问</h3>
+									</div>
+									<h3 class="c-back f-clear t14">权威荣誉 </h3>
+									<p class="f-toe">★ 韩国微创科学研究中心副</p>
+									<p class="f-toe">★ 韩国微创手术第一人 </p>
+									<p class="f-toe">★ 亚洲太平洋整形外科学会　微创专家</p>
+								</div>
+							</div>
+							<div class="m-handle">
+								<a href="###" class="btn btn1">了解专家</a>
+								<a href="###" class="btn btn2">在线咨询</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end 专家轮播-->
+				<div class="m-point" id="m-point">
+					<span class="prve"></span>
+					<a href="###" class="point active"></a>
+					<a href="###" class="point "></a>
+					<span class="next"></span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="g-box">
+			<div class="m-title">
+				热门问答
+				<span class="btn f-fr">更多 +</span>
+			</div>
+			<ul class="m-reply">
+				<li><a href="###" class="f-toe"><span class="c-yellow">【已解决】</span>腋臭治疗的最佳时期  </a> <span class="f-ab-fr c-yellow f-fr">免费通话</span></li>
+				<li><a href="###" class="f-toe"><span class="c-yellow">【已解决】</span>腋臭治疗的最佳时期  </a> <span class="f-ab-fr c-yellow f-fr">免费通话</span></li>
+				<li><a href="###" class="f-toe"><span class="c-yellow">【已解决】</span>腋臭治疗的最佳时期  </a> <span class=" f-ab-fr c-yellow f-fr">免费通话</span></li>
+				<li><a href="###" class="f-toe"><span class="c-yellow">【已解决】</span>腋臭治疗的最佳时期  </a> <span class=" f-ab-fr c-yellow f-fr">免费通话</span></li>
+			</ul>
+		</div>
+		
+		<div class="g-box">
+			<div class="m-title">
+				在线留言板
+				<span class="c-red t12">（不方便电话，请留言）</span>
+			</div>
+			
+			<form class="m-msg" action="" method="post">
+				<p> 
+					<label class="name">姓 &nbsp;&nbsp;&nbsp;&nbsp;名</label>
+					<label class="ipt">
+						<input type="text" name="" value="" />
+					</label> 
+				</p>
+				<p> 
+					<label class="name">电&nbsp;&nbsp;&nbsp;&nbsp;话</label> 
+					<label class="ipt">
+						<input type="text" name="" value="" />
+					</label> 
+				</p>
+				<p> 
+					<label class="name">病情描述</label> 
+					<label class="ipt">
+						<textarea name="" rows="" cols=""></textarea>
+					</label> 
+				</p>
+				<p class="m-handle">
+					<a class="btn b-yellow">提交</a>
+					<a class="btn b-grey">重置</a>
+				</p>
+				
+				<p class="f-tac"> *  提示：这些是必填的数据，请放心填写，我们会对这个数据做隐私保密。</p>
+				
+				<p class="f-tac c-red f-b"> 公告：通过网络、手机提前预约免专家挂号费</p>
+			</form>
+		</div>
+		
+		<div class="g-foot">
+			<nav class="m-nav">
+				<ul>
+					<li><a href="###">网站首页</a></li>
+					<li><a href="###">关于我们</a></li>
+					<li><a href="###">来院路线</a></li>
+					<li><a href="###">在线预约</a></li>
+				</ul>
+			</nav>
+			
+			<div class="m-txt">
+				<div class="u-pic">
+					<img src="images/tu02.png"/>
+				</div>
+				<p>健康咨询热线 <span class="u-tel">0755-8358 1866</span>（点击直接拨打电话） </p>
+				<p>地址：深圳市福田区下梅林梅华路217号 </p>
+				<p>版权所有：深圳广济医疗－腋臭无痕整形  2009-2011</p>
+			</div>
+		</div>
+		
+		<div class="m-fft">
+			<div class="free">
+				<div class="left">
+					<div class="leftc">
+						<input type="text" name="" id="" value=""  placeholder="请输入您的电话号码"/>
+					</div>
+				</div>
+				<span class="right b-yellow">免费通话</span>
+			</div>
+			<ul class="m-fmenu">
+				<li>
+					<a href="###">
+						<span class="home"></span><br>
+						首页
+					</a>
+				</li>
+				<li>
+					<a href="###">
+						<span class="tel"></span><br>
+						电话咨询
+					</a>
+				</li>
+				<li>
+					<a href="###">
+						<span class="line"></span><br>
+						来院路线
+					</a>
+				</li>
+				<li>
+					<a href="#top">
+						<span class="top"></span><br>
+						返回顶部
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="g-bottom"></div>
+	</body>
+</html>

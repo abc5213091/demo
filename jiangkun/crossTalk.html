@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<title>精品相声</title>
+		<script type="text/javascript" charset="utf-8">
+		
+		
+		$(function(){
+			$(".nav li").click(function(){
+				var index=$(this).index();
+				$(this).addClass("active").siblings().removeClass("active");
+				$(".article").eq(index).show().siblings(".article").hide();
+			})
+		})
+			
+			
+		</script>
+	</head>
+	<body>
+		
+		<div class="content">
+			<div class="video">
+				<img src="../01/images/pic2.jpg"/>
+				<span class="start"></span>
+			</div>
+			
+			
+			<div class="contentInfo">
+				
+			<ul class="nav">
+				<li class="active">详情</li>
+				<li>评论</li>
+			</ul>
+			
+			<div class="article" style="display: block;">
+				<div class="info">
+					<img src="../01/images/pic2.jpg"/>
+					<div class="i_right">
+						<h3>纪实人文</h3>
+						<h4>2013</h4>
+						<h4>2小时28分钟</h4>
+						<h4 class="red actor t10">演员  <span class="t6">姜昆/戴志诚</span></h4>
+						<h4><span class="t6 z">4,555</span>|<span class="t6 p">1,457</span></h4>
+					</div>
+				</div>
+				
+				<div class="a_content">
+					纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文纪实人文
+				</div>
+			</div>
+			
+			<div class="article">
+				<ul class="comment">
+					<li>
+						<img class="p_head" src="../01/images/pic2.jpg"/>
+						<div class="c_right">
+							<h3>
+								张龙
+								<span class="c_write">2</span>
+								<span class="c_praise">25</span>
+							</h3>
+							
+							<div class="c_text">
+								看着姜老师的相声长大的，非常喜欢！一听说姜老师开通微信就立马赶过来了。哈哈。。。永远支持姜老师。
+							</div>
+							<span class="ago t6">三年前</span>
+						</div>
+					</li>
+					
+					<li>
+						<img class="p_head" src="../01/images/pic2.jpg"/>
+						<div class="c_right">
+							<h3>
+								张龙
+								<span class="c_write">2</span>
+								<span class="c_praise">25</span>
+							</h3>
+							
+							<div class="c_text">
+								看着姜老师的相声长大的，非常喜欢！一听说姜老师开通微信就立马赶过来了。哈哈。。。永远支持姜老师。
+							</div>
+							<span class="ago t6">三年前</span>
+						</div>
+					</li>
+					<li>
+						<img class="p_head" src="../01/images/pic2.jpg"/>
+						<div class="c_right">
+							<h3>
+								张龙
+								<span class="c_write">2</span>
+								<span class="c_praise">25</span>
+							</h3>
+							
+							<div class="c_text">
+								看着姜老师的相声长大的，非常喜欢！一听说姜老师开通微信就立马赶过来了。哈哈。。。永远支持姜老师。
+							</div>
+							<span class="ago t6">三年前</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+			</div>
+		</div>
+	</body>
+</html>

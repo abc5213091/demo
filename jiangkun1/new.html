@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/css.css"/>
+		
+		<!--html5预加载图片-->
+		<link rel="prefetch" href="images/btn_03.png"/>
+		<link rel="prefetch" href="images/mu_03.png"/>
+		<link rel="prefetch" href="images/mu_05.png"/>
+		<link rel="prefetch" href="images/bj_03.png"/>
+		
+		<title>姜昆</title>
+		
+		<script type="text/javascript" charset="utf-8">
+			function Animates()
+			{
+				var pLeft=document.getElementById("pLeft"),
+					pRight=document.getElementById("pRight"),
+					pBtn=document.getElementById("pBtn"),
+					pDown=document.getElementById("pDown");
+					
+					pBtn.addEventListener('touchmove',function(e){
+	  					 e.preventDefault();
+	    				var touch = e.targetTouches[0];
+				        // 把元素放在手指所在的位置
+				        //pBtn.style.left = touch.pageX + 'px';
+				        
+				        if(touch.pageY>(200))
+				        {
+				        	pBtn.style.top = touch.pageY-100+ 'px';
+				        }
+				        
+				        //alert(touch.pageY+"======="+ pDown.offsetTop+"=========="+pDown.offsetHeight)
+				        
+				        if(touch.pageY>(pDown.offsetTop+pDown.offsetHeight/3))
+				        {
+				        	pLeft.style.webkitTransform="translateX(-100%)";
+				        	pRight.style.webkitTransform="translateX(100%)";
+				        	pDown.style.display="none";
+				        	pBtn.style.display="none";
+				        	
+				        	setTimeout(function(){
+				        	   document.querySelector(".purdah").style.display="none";
+				        	},2000)
+				        	
+				        }
+				        
+					},false);
+			}
+			
+			window.onload=Animates;
+		</script>
+	</head>
+	<body>
+		<div class="tbody">
+			
+			<div class="fooer">
+				<ul>
+					<li><a href="#">昆·动态</a></li>
+					<li><a href="videolist.html">相声精品</a></li>
+					<li><a href="#">书法展示</a></li>
+					<li><a href="#">笑友会</a></li>
+					<li><a href="awardlist.html">文学教育</a></li>
+					<li><a href="#">影视作品</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		
+		<div class="purdah">
+			<div class="pLeft" id="pLeft"></div>
+			<div class="pRight" id="pRight"></div>
+			<div class="pBtn" id="pBtn"></div>
+			<div class="pDown" id="pDown"></div>
+		</div>
+	</body>
+</html>
